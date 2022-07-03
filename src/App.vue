@@ -1,7 +1,7 @@
 <template>
   <div class="todoapp">
     <TodoHeader @add="addFn" />
-    <TodoMain :list="list" />
+    <TodoMain :list="list" @del="delFn" />
     <TodoFooter />
   </div>
 </template>
@@ -34,6 +34,10 @@ export default {
         name: val,
         isDone: false,
       });
+    },
+    delFn(id) {
+      const index = this.list.findIndex((item) => item.id == id);
+      this.list.splice(index, 1);
     },
   },
 };
