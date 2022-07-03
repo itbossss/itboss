@@ -1,6 +1,6 @@
 <template>
   <div class="todoapp">
-    <TodoHeader @add="addFn" />
+    <TodoHeader @add="addFn" @isAll="isChecked" />
     <TodoMain :list="exhibition" @del="delFn" />
     <TodoFooter :listSum="listSum" @upData="upDataFn" @clear="clearFn" />
   </div>
@@ -41,6 +41,9 @@ export default {
     },
     clearFn() {
       this.list = this.list.filter((item) => !item.isDone);
+    },
+    isChecked(val) {
+      this.list.forEach((item) => (item.isDone = val));
     },
   },
   computed: {
