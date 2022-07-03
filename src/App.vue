@@ -15,11 +15,7 @@ export default {
   name: "App",
   data() {
     return {
-      list: [
-        { id: 102, name: "吃饭", isDone: true },
-        { id: 101, name: "睡觉", isDone: false },
-        { id: 100, name: "打豆豆", isDone: true },
-      ],
+      list: JSON.parse(localStorage.getItem("list")) || [],
       val: "all",
     };
   },
@@ -59,6 +55,14 @@ export default {
       } else {
         return this.list.filter((item) => !item.isDone);
       }
+    },
+  },
+  watch: {
+    list: {
+      deep: true,
+      handler(val) {
+        localStorage.setItem("list", JSON.stringify(val || []));
+      },
     },
   },
 };
