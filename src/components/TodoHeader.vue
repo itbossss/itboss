@@ -4,10 +4,23 @@
     <input id="toggle-all" class="toggle-all" type="checkbox" />
     <label for="toggle-all"></label>
     <!-- label 可以关联一个表单标签 -->
-    <input class="new-todo" placeholder="输入任务名称-回车确认" autofocus />
+    <input class="new-todo" placeholder="输入任务名称-回车确认" autofocus @keyup.enter="add" v-model.trim="textVal"/>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      textVal:''
+    }
+  },
+  methods:{
+    add(){
+      if(!this.textVal) return
+      this.$emit('add',this.textVal)
+      this.textVal = ''
+    }
+  }
+};
 </script>

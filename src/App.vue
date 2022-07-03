@@ -1,6 +1,6 @@
 <template>
   <div class="todoapp">
-    <TodoHeader />
+    <TodoHeader @add="addFn" />
     <TodoMain :list="list" />
     <TodoFooter />
   </div>
@@ -17,8 +17,8 @@ export default {
     return {
       list: [
         { id: 100, name: "吃饭", isDone: true },
-        { id: 201, name: "睡觉", isDone: false },
-        { id: 103, name: "打豆豆", isDone: true },
+        { id: 101, name: "睡觉", isDone: false },
+        { id: 102, name: "打豆豆", isDone: true },
       ],
     };
   },
@@ -26,6 +26,15 @@ export default {
     TodoHeader,
     TodoMain,
     TodoFooter,
+  },
+  methods: {
+    addFn(val) {
+      this.list.unshift({
+        id: this.list[0] ? this.list[this.list.length - 1].id + 1 : 100,
+        name: val,
+        isDone: false,
+      });
+    },
   },
 };
 </script>
