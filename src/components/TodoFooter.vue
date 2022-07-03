@@ -5,13 +5,28 @@
     >
     <ul class="filters">
       <li>
-        <a class="selected" href="javascript:;">全部</a>
+        <a
+          :class="{ selected: isOk == 'all' }"
+          href="javascript:;"
+          @click="change('all')"
+          >全部</a
+        >
       </li>
       <li>
-        <a href="javascript:;">未完成</a>
+        <a
+          :class="{ selected: isOk == 'no' }"
+          href="javascript:;"
+          @click="change('no')"
+          >未完成</a
+        >
       </li>
       <li>
-        <a href="javascript:;">已完成</a>
+        <a
+          :class="{ selected: isOk == 'ok' }"
+          href="javascript:;"
+          @click="change('ok')"
+          >已完成</a
+        >
       </li>
     </ul>
     <button class="clear-completed">清除已完成</button>
@@ -20,6 +35,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isOk: "all",
+    };
+  },
   props: ["listSum"],
+  methods: {
+    change(val) {
+      this.isOk = val;
+      this.$emit("upData", val);
+    },
+  },
 };
 </script>
