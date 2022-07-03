@@ -2,7 +2,7 @@
   <div class="todoapp">
     <TodoHeader @add="addFn" />
     <TodoMain :list="list" @del="delFn" />
-    <TodoFooter />
+    <TodoFooter :listSum="listSum"/>
   </div>
 </template>
 
@@ -40,6 +40,11 @@ export default {
       this.list.splice(index, 1);
     },
   },
+  computed:{
+    listSum(){
+      return this.list.filter(item=>!item.isDone).length
+    }
+  }
 };
 </script>
 
