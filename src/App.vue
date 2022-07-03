@@ -2,7 +2,7 @@
   <div class="todoapp">
     <TodoHeader @add="addFn" />
     <TodoMain :list="exhibition" @del="delFn" />
-    <TodoFooter :listSum="listSum" @upData="upDataFn" />
+    <TodoFooter :listSum="listSum" @upData="upDataFn" @clear="clearFn" />
   </div>
 </template>
 
@@ -42,6 +42,9 @@ export default {
     },
     upDataFn(val) {
       this.val = val;
+    },
+    clearFn() {
+      this.list = this.list.filter((item) => !item.isDone);
     },
   },
   computed: {
