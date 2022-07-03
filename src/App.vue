@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="todoapp">
+    <TodoHeader @add="addFn" />
+    <TodoMain :list="list" />
+    <TodoFooter />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoHeader from './components/TodoHeader.vue'
+import TodoMain from './components/TodoMain.vue'
+import TodoFooter from './components/TodoFooter.vue'
 
 export default {
-  name: 'App',
+  data() {
+    return {
+      list: [
+        { id: 100, name: '吃饭', isDone: true },
+        { id: 101, name: '睡觉', isDone: false },
+        { id: 103, name: '打豆豆', isDone: true },
+      ],
+    }
+  },
   components: {
-    HelloWorld
-  }
+    TodoHeader,
+    TodoMain,
+    TodoFooter,
+  },
+  methods: {
+    addFn(val) {
+      const id = this.list.length ? this.list[this.list.length - 1].id + 1 : 1
+      this.list.push({ id, name: val, isDone: false })
+    },
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
