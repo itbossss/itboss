@@ -1,8 +1,16 @@
 <template>
-  <div></div>
+  <div class="todoapp">
+    <TodoHeader />
+    <TodoMain :list="list" />
+    <TodoFooter />
+  </div>
 </template>
 
 <script>
+import TodoHeader from "./components/TodoHeader.vue";
+import TodoMain from "./components/TodoMain.vue";
+import TodoFooter from "./components/TodoFooter.vue";
+
 export default {
   name: "App",
   data() {
@@ -13,6 +21,11 @@ export default {
         { id: 103, name: "打豆豆", isDone: true },
       ],
     };
+  },
+  components: {
+    TodoHeader,
+    TodoMain,
+    TodoFooter,
   },
 };
 </script>
