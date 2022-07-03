@@ -1,8 +1,12 @@
 <template>
   <div class="todoapp">
-    <TodoHeader @add="addFn" />
+    <TodoHeader @add="addFn" @setchecked="setcheckedFn" />
     <TodoMain :list="showlist" @delList="delListFn" />
-    <TodoFooter :count="count" @fliterdata="fliterdataFn" />
+    <TodoFooter
+      :count="count"
+      @fliterdata="fliterdataFn"
+      @clearAll="clearAllFn"
+    />
   </div>
 </template>
 
@@ -15,11 +19,7 @@ export default {
   data() {
     return {
       getSel: 'all',
-      list: [
-        { id: 100, name: '吃饭', isDone: true },
-        { id: 101, name: '睡觉', isDone: false },
-        { id: 103, name: '打豆豆', isDone: true },
-      ],
+      list: JSON.parse(localStorage.getItem('list') || []),
     }
   },
   components: {
@@ -39,6 +39,12 @@ export default {
     fliterdataFn(val) {
       this.getSel = val
     },
+    clearAllFn() {
+      this.list.forEach((ele) => (ele.isDone = false))
+    },
+    setcheckedFn(val) {
+      this.list.forEach((ele) => (ele.isDone = val))
+    },
   },
   computed: {
     count() {
@@ -49,6 +55,14 @@ export default {
       else if (this.getSel == 'yes')
         return this.list.filter((ele) => ele.isDone)
       else return this.list
+    },
+  },
+  watch: {
+    list: {
+      handler(val) {
+        localStorage.setItem('list', JSON.stringify(val || []))
+      },
+      deep: true,
     },
   },
 }
