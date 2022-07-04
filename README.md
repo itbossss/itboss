@@ -1,24 +1,8 @@
-# todos
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# vue基础阶段作业
+## 查看个人作业请切换分支(点击跳转)：
+<ul>
+<li><a href="https://github.com/itbossss/itboss/tree/xj"  > x&nbsp;j&nbsp;:&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;肖&nbsp;杰</a></li>
+<li><a href="https://github.com/itbossss/itboss/tree/webxf"> webxf&nbsp;:  金&nbsp;絮&nbsp;帆 </a></li>
+<li><a href="https://github.com/itbossss/itboss/tree/zzy"> zzy&nbsp;:&nbsp; &nbsp;  &nbsp;&nbsp;张&nbsp;尊&nbsp;勇</a></li>
+<li><a href="https://github.com/itbossss/itboss/tree/xx0tt"> xx0tt&nbsp;:&nbsp;  &nbsp;徐&nbsp;金&nbsp;平&nbsp; </a></li>
+</ul>
